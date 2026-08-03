@@ -91,8 +91,8 @@ in
         ];
 
       users = {
-        groups.${cfg.group} = {
-          gid = mkForce config.nixflix.globals.gids.seerr;
+        groups.${cfg.group} = optionalAttrs (config.nixflix.globals.gids ? ${cfg.group}) {
+          gid = mkDefault config.nixflix.globals.gids.${cfg.group};
         };
 
         users.${cfg.user} = {
@@ -101,7 +101,7 @@ in
           isSystemUser = true;
         }
         // optionalAttrs (config.nixflix.globals.uids ? ${cfg.user}) {
-          uid = mkForce config.nixflix.globals.uids.${cfg.user};
+          uid = mkDefault config.nixflix.globals.uids.${cfg.user};
         };
       };
 

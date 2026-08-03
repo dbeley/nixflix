@@ -193,11 +193,11 @@ in
       ) instances;
 
     users.users.${cfg.user} = optionalAttrs (config.nixflix.globals.uids ? ${cfg.user}) {
-      uid = mkForce config.nixflix.globals.uids.${cfg.user};
+      uid = mkDefault config.nixflix.globals.uids.${cfg.user};
     };
 
     users.groups.${cfg.group} = optionalAttrs (config.nixflix.globals.gids ? ${cfg.group}) {
-      gid = mkForce config.nixflix.globals.gids.${cfg.group};
+      gid = mkDefault config.nixflix.globals.gids.${cfg.group};
     };
 
     services.recyclarr = {

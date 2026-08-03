@@ -40,8 +40,8 @@ in
     ];
 
     users.groups.media = {
-      gid = globals.gids.media;
-      members = cfg.mediaUsers;
+      gid = mkDefault globals.gids.media;
+      members = mkDefault cfg.mediaUsers;
     };
 
     systemd.tmpfiles.settings."10-nixflix" = {

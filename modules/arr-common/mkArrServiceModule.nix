@@ -275,7 +275,7 @@ in
 
       users = {
         groups.${cfg.group} = optionalAttrs (globals.gids ? ${cfg.group}) {
-          gid = globals.gids.${cfg.group};
+          gid = mkDefault globals.gids.${cfg.group};
         };
         users.${cfg.user} = {
           inherit (cfg) group;
@@ -283,7 +283,7 @@ in
           isSystemUser = true;
         }
         // optionalAttrs (globals.uids ? ${cfg.user}) {
-          uid = globals.uids.${cfg.user};
+          uid = mkDefault globals.uids.${cfg.user};
         };
       };
 

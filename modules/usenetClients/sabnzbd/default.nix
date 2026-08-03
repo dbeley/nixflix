@@ -146,7 +146,7 @@ in
         isSystemUser = true;
       }
       // optionalAttrs (config.nixflix.globals.uids ? ${cfg.user}) {
-        uid = mkForce config.nixflix.globals.uids.${cfg.user};
+        uid = mkDefault config.nixflix.globals.uids.${cfg.user};
       };
 
       users.groups.${cfg.group} = { };

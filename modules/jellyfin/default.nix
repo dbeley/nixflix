@@ -49,11 +49,11 @@ in
       home = cfg.dataDir;
     }
     // optionalAttrs (config.nixflix.globals.uids ? ${cfg.user}) {
-      uid = mkForce config.nixflix.globals.uids.${cfg.user};
+      uid = mkDefault config.nixflix.globals.uids.${cfg.user};
     };
 
     users.groups.${cfg.group} = optionalAttrs (globals.gids ? ${cfg.group}) {
-      gid = mkForce globals.gids.${cfg.group};
+      gid = mkDefault globals.gids.${cfg.group};
     };
 
     systemd.tmpfiles.settings."10-jellyfin" = {

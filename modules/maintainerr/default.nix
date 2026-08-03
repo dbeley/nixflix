@@ -119,11 +119,11 @@ in
         home = cfg.dataDir;
       }
       // optionalAttrs (config.nixflix.globals.uids ? ${cfg.user}) {
-        uid = mkForce config.nixflix.globals.uids.${cfg.user};
+        uid = mkDefault config.nixflix.globals.uids.${cfg.user};
       };
 
       users.groups.${cfg.group} = optionalAttrs (config.nixflix.globals.gids ? ${cfg.group}) {
-        gid = mkForce config.nixflix.globals.gids.media;
+        gid = mkDefault config.nixflix.globals.gids.${cfg.group};
       };
 
       systemd.tmpfiles.settings."10-maintainerr" = {
